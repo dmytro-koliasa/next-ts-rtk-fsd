@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import { Provider } from 'react-redux';
 import '@/styles/global.scss';
 import { wrapper } from '@/shared/config/store/makeStore';
+import { FloatingProvider } from '@/shared/lib/components/FloatingProvider';
 
 function App({
   Component,
@@ -12,11 +13,14 @@ function App({
   } = wrapper.useWrappedStore(rest);
 
   return (
-    <Provider store={store}>
-      <div>
-        <Component {...props.pageProps} />
-      </div>
-    </Provider>
+    <FloatingProvider>
+      <Provider store={store}>
+        <div>
+          <Component {...props.pageProps} />
+          <div id="portal" />
+        </div>
+      </Provider>
+    </FloatingProvider>
   );
 }
 
