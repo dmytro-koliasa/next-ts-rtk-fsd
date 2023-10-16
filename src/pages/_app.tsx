@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import '@/styles/global.scss';
 import { wrapper } from '@/shared/config/store/makeStore';
 import { FloatingProvider } from '@/shared/lib/components/FloatingProvider';
+import { appWithTranslation } from 'next-i18next';
 
 function App({
   Component,
@@ -24,4 +25,4 @@ function App({
   );
 }
 
-export default App;
+export default appWithTranslation(App);
